@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terminal - LAKXITT</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: #00ff00;
+      font-family: monospace;
+      font-size: 1.1em;
+      padding: 2rem;
+    }
+    .terminal {
+      max-width: 800px;
+      margin: auto;
+      white-space: pre-wrap;
+    }
+    .close-btn {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      background: #00ff00;
+      color: black;
+      padding: 8px 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: monospace;
+    }
+    .close-btn:hover {
+      background: #00cc00;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+        font-size: 1em;
+      }
+      .close-btn {
+        font-size: 0.9em;
+        padding: 6px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="close-btn" onclick="window.location.href='index.html'">CLOSE</button>
+  <div class="terminal" id="terminal"></div>
+  <audio id="typeAudio" src="https://www.soundjay.com/button/sounds/button-16.mp3" preload="auto"></audio>
+  <script>
+    const terminal = document.getElementById("terminal");
+    const audio = document.getElementById("typeAudio");
+    const lines = [
+      "$ whoami",
+      "lakxitt",
+      "",
+      "$ ls",
+      "skills.txt   projects.txt   contact.txt",
+      "",
+      "$ cat skills.txt",
+      "- Web Exploitation",
+      "- OSINT",
+      "- Pentesting",
+      "- CTFs (TryHackMe)",
+      "",
+      "$ cat projects.txt",
+      "- RAT Development (Python)",
+      "- Bug Bounty Automation Tools",
+      "- Coming soon...",
+      "",
+      "$ cat contact.txt",
+      "- Twitter: @lakxitt",
+      "- Telegram: @Lakxitt",
+      ""
+    ];
+    let i = 0;
+    function typeLine() {
+      if (i < lines.length) {
+        terminal.innerHTML += lines[i] + "\n";
+        audio.play();
+        i++;
+        setTimeout(typeLine, 500);
+      }
+    }
+    typeLine();
+  </script>
+</body>
+</html>
